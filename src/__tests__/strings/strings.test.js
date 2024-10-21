@@ -1,6 +1,18 @@
-import { toUpper, toLower,len } from "./strings";
+import { toUpper, toLower, len } from "../../strings.js";
 
 describe('strings testing', () => {
+    beforeAll(() => {
+        console.log('beforeAll');
+    })
+    beforeEach(() => {
+        console.log('beforeEach');
+    })
+    afterAll(() => {
+        console.log('afterAll');
+    })
+    afterEach(() => {
+        console.log('afterEach');
+    })
     test('toUpper', () => {
         const str = 'test'
         const result = toUpper(str)
@@ -16,4 +28,5 @@ describe('strings testing', () => {
         const result = len(str)
         expect(result).toBe(4)
     })
+    test.todo('toLower with toUpper')
 })

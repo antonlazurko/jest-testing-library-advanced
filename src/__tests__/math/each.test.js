@@ -1,11 +1,12 @@
-import { multiply } from "./math";
+import { multiply } from "../../math.js";
+import {mockArray, mockArrayWithObj} from "../../__mocks__/array.mock.js";
 describe('each testing', () => {
-    test.each([ [2, 3, 6], [-2, 3, -6], [-2, -3, 6]])
+    test.each(mockArray)
     ('should multiply two positive numbers',  (a, b, expected) => {
         const res = multiply(a, b)
         expect(res).toBe(expected)
     })
-    test.each([{a: 2, b: 3, expected: 6}, {a: -2, b: 3, expected: -6}, {a: -2, b: -3, expected: 6}])
+    test.each(mockArrayWithObj)
     ('should multiply two numbers',  ({a, b, expected}) => {
         const res = multiply(a, b)
         expect(res).toBe(expected)

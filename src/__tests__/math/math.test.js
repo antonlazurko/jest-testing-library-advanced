@@ -1,4 +1,4 @@
-import { multiply } from './math.js'
+import { multiply } from "../../math.js";
 
 describe('math testing', () => {
     describe('multiply', () => {
