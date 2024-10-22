@@ -45,7 +45,20 @@ afterEach(() => {
 
   test('should throw an error when response is not ok', async () => {
     fetch.mockResolvedValueOnce({ ok: false })
-    await expect(createTodoOnServer('Todo 1')).rejects.toMatch('Cannot create todo')
+    const fnToThrow = () => createTodoOnServer('Todo 1')
+    await expect(fnToThrow).rejects.toThrow('Cannot create todo')
+  })
+
+  test('should throw an error when no valid title is provided',  (done) => {
+    try {
+      createTodo('');
+      done('createTodo should throw an error for invalid values');
+    } catch (error) {
+      expect(error.message).toBe('title is required!');
+      done();
+    }
+    // const fnToThrow = () => createTodo('')
+    // await expect(fnToThrow).toThrow('title is required!')
   })
 
 })
