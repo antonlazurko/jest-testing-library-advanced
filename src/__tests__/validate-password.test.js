@@ -2,7 +2,7 @@ import {validatePassword} from "../validate-password.js";
 
 describe('validatePassword testing', () => {
     test('should return true when password is valid', () => {
-        const password = 'password123'
+        const password = 'Password123!'
         const result = validatePassword(password)
         expect(result).toBe(true)
     })
