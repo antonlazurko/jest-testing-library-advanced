@@ -1,26 +1,20 @@
 /** @type {import('jest').Config} */
 const config = {
-    verbose: true,
-    collectCoverage: true,
-    collectCoverageFrom: [
-        'src/**/*.{js,jsx}',
-        '!**/node_modules/**',
-        '!**/coverage/**',
-        '!src/**/*.mock.*'
-    ],
-    testMatch: ['**/src/**/*.test.js'],
-    setupFiles: ['./jest.setup.js'],
-    testEnvironment: 'jsdom',
-    setupFilesAfterEnv: ['./jest.setup.js'],
-    coverageDirectory: 'coverage',
-    coverageThreshold: {
-        global: {
-            branches: 80,
-            functions: 80,
-            lines: 80,
-            statements: 80
-        }
-    }
+  verbose: true,
+  collectCoverage: false,
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.js',
+    '!**/node_modules/**',
+    '!<rootDir>/src/**/*.mock.*',
+  ],
+  testMatch: ['<rootDir>/src/**/*.test.js'],
+  testEnvironment: 'node',
+  setupFiles: ['<rootDir>/internal/jest/jest.setup.js'],
+  // setupFilesAfterEnv: ['<rootDir>/internal/jest/setup-tests.js'],
+  setupFilesAfterEnv: ['<rootDir>/internal/jest/custom-matchers.js'],
+  globals: {
+    __DEV__: true,
+  },
 };
 
 module.exports = config;

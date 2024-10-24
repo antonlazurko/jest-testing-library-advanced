@@ -1,15 +1,13 @@
 /** @type {import('jest').Config} */
 const config = {
-    verbose: true,
-    collectCoverage: true,
-    collectCoverageFrom: [
-        'src/**/*.{js,jsx}',
-        '!**/node_modules/**',
-        '!**/coverage/**',
-        '!src/**/*.mock.*'
-    ],
-    coverageDirectory: 'coverage',
-    testMatch: ['**/src/**/*.spec.js']
+  verbose: true,
+  collectCoverage: false,
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.js',
+    '!**/node_modules/**',
+    '!<rootDir>/src/**/*.mock.*',
+  ],
+  testMatch: ['<rootDir>/src/**/*.spec.js'],
 };
 
 module.exports = config;

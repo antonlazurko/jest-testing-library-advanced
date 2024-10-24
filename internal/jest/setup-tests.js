@@ -10,10 +10,10 @@ matchMediaPolyfill(window);
  * we must implement window.resizeTo in jsdom
  */
 window.resizeTo = function resizeTo(width, height) {
-    Object.assign(this, {
-      innerWidth: width,
-      innerHeight: height,
-      outerWidth: width,
-      outerHeight: height,
-    }).dispatchEvent(new this.Event('resize'));
-  };
+  Object.assign(this, {
+    innerWidth: width,
+    innerHeight: height,
+    outerWidth: width,
+    outerHeight: height,
+  }).dispatchEvent(new this.Event('resize'));
+};
