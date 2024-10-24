@@ -31,6 +31,24 @@
         "windows": {
           "program": "${workspaceFolder}/node_modules/jest/bin/jest",
         }
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Test Integrational",
+        "program": "${workspaceFolder}/node_modules/.bin/jest",
+        "args": [
+          "--runTestsByPath",
+          "${relativeFile}",
+          "--config",
+          "jest.integration.config.js"
+        ],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "disableOptimisticBPs": true,
+        "windows": {
+          "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+        }
       }
     ]
   }

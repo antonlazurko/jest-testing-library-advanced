@@ -8,16 +8,8 @@ const config = {
         '!**/coverage/**',
         '!src/**/*.mock.*'
     ],
-    testMatch: ['**/src/**/*.test.js'],
     coverageDirectory: 'coverage',
-    coverageThreshold: {
-        global: {
-            branches: 80,
-            functions: 80,
-            lines: 80,
-            statements: 80
-        }
-    }
+    testMatch: ['**/src/**/*.spec.js']
 };
 
 module.exports = config;
