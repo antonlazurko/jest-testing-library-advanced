@@ -9,6 +9,9 @@ const config = {
         '!src/**/*.mock.*'
     ],
     testMatch: ['**/src/**/*.test.js'],
+    setupFiles: ['./jest.setup.js'],
+    testEnvironment: 'jsdom',
+    setupFilesAfterEnv: ['./jest.setup.js'],
     coverageDirectory: 'coverage',
     coverageThreshold: {
         global: {
