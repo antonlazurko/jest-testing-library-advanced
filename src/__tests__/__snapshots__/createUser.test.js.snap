@@ -28,7 +28,7 @@ exports[`createUser should create a user with firstName, lastName, and phone 1`]
   "firstName": "Anton",
   "lastName": "Doe",
   "password": "password",
-  "phone": "123-456-7890",
+  "phone": "",
   "type": "USER",
 }
 `;

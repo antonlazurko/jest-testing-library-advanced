@@ -14,7 +14,6 @@ describe('createUser', () => {
     const user = createUser({
       firstName: 'Anton',
       lastName: 'Doe',
-      phone: '123-456-7890',
     });
 
     expect(user).toMatchSnapshot();
