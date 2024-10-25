@@ -2,7 +2,7 @@ import { passwordValidationErrors } from '../../constants/validation';
 import { validatePassword } from '../validatePassword';
 
 describe('validatePassword', () => {
-  it('should return {success: true, error: null} for a valid password', () => {
+  test('should return {success: true, error: null} for a valid password', () => {
     const validPassword = 'MyPassword123!';
 
     expect(validatePassword(validPassword)).toEqual({
@@ -10,7 +10,7 @@ describe('validatePassword', () => {
       error: null,
     });
   });
-  it('should validate a password against 8 minimum characters and return error message', () => {
+  test('should validate a password against 8 minimum characters and return error message', () => {
     const invalidPassword = 'MyPs67!';
     const expectedError = {
       success: false,
@@ -19,7 +19,7 @@ describe('validatePassword', () => {
 
     expect(validatePassword(invalidPassword)).toEqual(expectedError);
   });
-  it('should validate a password against mixed case', () => {
+  test('should validate a password against mixed case', () => {
     const invalidPassword = 'mypassword12!';
     const invalidPassword2 = 'MYPASSWORD1222!';
     const expectedError = {
@@ -30,7 +30,7 @@ describe('validatePassword', () => {
     expect(validatePassword(invalidPassword)).toEqual(expectedError);
     expect(validatePassword(invalidPassword2)).toEqual(expectedError);
   });
-  it('should validate a password against digits and characters', () => {
+  test('should validate a password against digits and characters', () => {
     const invalidPassword = 'MyPassword!@';
     const invalidPassword2 = 'MyPassword#!';
     const expectedError = {
@@ -41,7 +41,7 @@ describe('validatePassword', () => {
     expect(validatePassword(invalidPassword)).toEqual(expectedError);
     expect(validatePassword(invalidPassword2)).toEqual(expectedError);
   });
-  it('should validate a password against special character', () => {
+  test('should validate a password against special character', () => {
     const invalidPassword = 'MyPassword123';
     const expectedError = {
       success: false,
