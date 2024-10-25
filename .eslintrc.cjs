@@ -4,6 +4,7 @@ module.exports = {
         browser: true,
         es2020: true,
         node: 'current',
+        'jest/globals': true
     },
     extends: [
         'eslint:recommended',
@@ -21,13 +22,14 @@ module.exports = {
             version: '18.2',
         },
     },
-    plugins: ['react-refresh'],
+    plugins: ['react-refresh', 'jest'],
     rules: {
         'react/jsx-no-target-blank': 'off',
         'react-refresh/only-export-components': [
             'warn', {
                 allowConstantExport: true
             }],
-        'react/prop-types': 'off'
+        'react/prop-types': 'off',
+        'jest/no-focused-tests': 'off',
     },
 }
