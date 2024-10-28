@@ -6,31 +6,11 @@ import {useCreateUser} from './hooks/use-create-user';
 import { Text } from './components/Text';
 
 function App() {
+
   const { successMessage, errorMessage, onSubmit, onSuccess, onError } = useCreateUser();
-  // const [successMessage, setSuccessMessage] = useState('');
-  // const [errorMessage, setErrorMessage] = useState('');
-
-  // const onSubmit = async ({ password }) => {
-  //   const { success, error } = validatePassword(password);
-
-  //   if (!success) {
-  //     throw new Error(error);
-  //   }
-
-  //   await wait(1000);
-  // };
-
-  // const onSuccess = ({ name, password }) => {
-  //   setErrorMessage('');
-  //   setSuccessMessage(`User ${name} created with password ${password}`);
-  // };
-
-  // const onError = (error) => {
-  //   setErrorMessage(error.message);
-  // };
 
   return (
-    <>
+    <main data-testid="app">
       <Title>Create user</Title>
       <Form onSubmit={onSubmit} onSuccess={onSuccess} onError={onError}>
         <Input label="User name" name="name" />
@@ -39,7 +19,7 @@ function App() {
       </Form>
       {successMessage && <Text isSuccess>{successMessage}</Text>}
       {errorMessage && <Text isError>{errorMessage}</Text>}
-    </>
+    </main>
   );
 }
 
