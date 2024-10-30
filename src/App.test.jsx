@@ -36,11 +36,11 @@ describe("App", () => {
         expect(successMessage).not.toBeInTheDocument();
         expect(errorMessage).not.toBeInTheDocument();
 
-        act(() => {
+        // act(() => {
             fireEvent.change(userNameInput, {target: {value: 'test'}});
             fireEvent.change(passwordInput, {target: {value: '1234567'}});
             fireEvent.click(submitButton);
-        })
+        // })
         const errorMessageAfterSubmit = await screen.findByText(passwordValidationErrors.length);
         expect(errorMessageAfterSubmit).toBeInTheDocument();
     })
