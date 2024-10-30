@@ -1,4 +1,4 @@
-import { fireEvent, act, render, screen, logRoles } from "@testing-library/react";
+import { fireEvent, act, render, screen, logRoles, within } from "@testing-library/react";
 import { passwordValidationErrors } from './constants/validation';
 
 import App from "./App";
@@ -70,7 +70,20 @@ describe("App", () => {
     })
     test('log testing playground url', () => {
         const {baseElement} = render(<App />);
-        screen.logTestingPlaygroundURL(baseElement);
+        // screen.logTestingPlaygroundURL(baseElement);
         logRoles(baseElement)
+    })
+
+    test('using within', () => {
+        render(<App />);
+        const form = screen.getByRole('form');
+        expect(form).toBeInTheDocument();
+        const userNameInput = within(form).getByLabelText(/User name/);
+        const passwordInput = within(form).getByLabelText(/Password/);
+        const submitButton = within(form).getByRole('button', { name: /Create user/ });
+
+        expect(userNameInput).toBeInTheDocument();
+        expect(passwordInput).toBeInTheDocument();
+        expect(submitButton).toBeInTheDocument();
     })
 })
