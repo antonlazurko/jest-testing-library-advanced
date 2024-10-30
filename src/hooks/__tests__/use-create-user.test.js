@@ -1,12 +1,13 @@
-import { renderHook, act } from '@testing-library/react';
+import { act } from '@testing-library/react';
 
 import { useCreateUser } from '../use-create-user';
 import { passwordValidationErrors } from '../../constants/validation';
+import {renderHookWithProviders} from "../../utils/renderWithProviders";
 
 describe('useCreateUser', () => {
 
     test('should return an object with correct properties', () => {
-        const { result } = renderHook(() => useCreateUser());
+        const { result } = renderHookWithProviders(() => useCreateUser());
         const { successMessage, errorMessage, onSubmit, onSuccess, onError } = result.current;
         expect(successMessage).toBe('');
         expect(errorMessage).toBe('');
@@ -16,7 +17,7 @@ describe('useCreateUser', () => {
     });
 
     test('should set success message', () => {
-        const { result } = renderHook(() => useCreateUser());
+        const { result } = renderHookWithProviders(() => useCreateUser());
 
         expect(result.current.successMessage).toBe('');
 
@@ -28,7 +29,7 @@ describe('useCreateUser', () => {
     })
 
     test('should throw error message', () => {
-        const { result } = renderHook(() => useCreateUser());
+        const { result } = renderHookWithProviders(() => useCreateUser());
 
         expect(result.current.errorMessage).toBe('');
 
@@ -38,7 +39,7 @@ describe('useCreateUser', () => {
     })
 
     test('should throw error message on invalid password', async() => {
-        const { result } = renderHook(() => useCreateUser());
+        const { result } = renderHookWithProviders(() => useCreateUser());
         const {onSubmit, errorMessage} = result.current;
         const password = '123';
         expect(errorMessage).toBe('');
@@ -47,7 +48,7 @@ describe('useCreateUser', () => {
     })
 
     test('should not throw error message on valid password', async() => {
-        const { result } = renderHook(() => useCreateUser());
+        const { result } = renderHookWithProviders(() => useCreateUser());
         const {onSubmit, errorMessage} = result.current;
         const password = 'MyPassword123!';
         expect(errorMessage).toBe('');

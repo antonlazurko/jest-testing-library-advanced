@@ -1,5 +1,6 @@
 import { fireEvent, act, render, screen, logRoles, within } from "@testing-library/react";
 import { passwordValidationErrors } from './constants/validation';
+import {renderWithProviders} from "./utils/renderWithProviders";
 
 import App from "./App";
 import * as waitMock from './helpers/wait';
@@ -9,7 +10,7 @@ const waitSpy = jest.spyOn(waitMock, 'wait');
 describe("App", () => {
 
     test("should render App with form and title", () => {
-        const {container} = render(<App />);
+        const {container} = renderWithProviders(<App />);
         expect(screen.getByTestId('app')).toBeInTheDocument()
 
         const userNameInput = screen.getByLabelText(/User name/);
@@ -24,7 +25,7 @@ describe("App", () => {
     });
 
     test('should render App with error message when form was submit with weak  password', async () => {
-        render(<App />);
+        renderWithProviders(<App />);
         const userNameInput = screen.getByLabelText(/User name/);
         const passwordInput = screen.getByLabelText(/Password/);
         const submitButton = screen.getByRole('button', { name: /Create user/ });
@@ -45,7 +46,7 @@ describe("App", () => {
     })
 
     test('should render App with success message when form was submit with strong  password', async () => {
-        render(<App />);
+        renderWithProviders(<App />);
         const userNameInput = screen.getByLabelText(/User name/);
         const passwordInput = screen.getByLabelText(/Password/);
         const submitButton = screen.getByRole('button', { name: /Create user/ });
@@ -69,13 +70,13 @@ describe("App", () => {
         expect(successMessageAfterSubmit).toBeInTheDocument();
     })
     test('log testing playground url', () => {
-        const {baseElement} = render(<App />);
+        const {baseElement} = renderWithProviders(<App />);
         // screen.logTestingPlaygroundURL(baseElement);
         logRoles(baseElement)
     })
 
     test('using within', () => {
-        render(<App />);
+        renderWithProviders(<App />);
         const form = screen.getByRole('form');
         expect(form).toBeInTheDocument();
         const userNameInput = within(form).getByLabelText(/User name/);

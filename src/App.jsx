@@ -2,15 +2,17 @@ import './App.css';
 import { Form } from './components/Form/Form';
 import { Input } from './components/Input';
 import { Title } from './components/Title/Title';
-import {useCreateUser} from './hooks/use-create-user';
 import { Text } from './components/Text';
+import { useCreateUser } from './hooks/use-create-user';
+import { ToggleTheme } from './components/ToggleTheme';
 
 function App() {
-
-  const { successMessage, errorMessage, onSubmit, onSuccess, onError } = useCreateUser();
+  const { successMessage, errorMessage, onSubmit, onSuccess, onError } =
+    useCreateUser();
 
   return (
     <main data-testid="app">
+      <ToggleTheme />
       <Title>Create user</Title>
       <Form onSubmit={onSubmit} onSuccess={onSuccess} onError={onError}>
         <Input label="User name" name="name" />
