@@ -1,4 +1,4 @@
-import { fireEvent, act, render, screen } from "@testing-library/react";
+import { fireEvent, act, render, screen, logRoles } from "@testing-library/react";
 import { passwordValidationErrors } from './constants/validation';
 
 import App from "./App";
@@ -67,5 +67,10 @@ describe("App", () => {
         })
         const successMessageAfterSubmit = await screen.findByText(/created with password/);
         expect(successMessageAfterSubmit).toBeInTheDocument();
+    })
+    test('log testing playground url', () => {
+        const {baseElement} = render(<App />);
+        screen.logTestingPlaygroundURL(baseElement);
+        logRoles(baseElement)
     })
 })
