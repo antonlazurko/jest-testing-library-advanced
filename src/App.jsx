@@ -1,27 +1,30 @@
-import './App.css';
-import { Form } from './components/Form/Form';
-import { Input } from './components/Input';
-import { Title } from './components/Title/Title';
-import { Text } from './components/Text';
-import { useCreateUser } from './hooks/use-create-user';
-import { ToggleTheme } from './components/ToggleTheme';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Contact } from './pages/Contact';
+import { Category } from './pages/Category';
+import { NotFound } from './pages/NotFound';
+import { Recipe } from './pages/Recipe';
 
 function App() {
-  const { successMessage, errorMessage, onSubmit, onSuccess, onError } =
-    useCreateUser();
-
   return (
-    <main data-testid="app">
-      <ToggleTheme />
-      <Title>Create user</Title>
-      <Form onSubmit={onSubmit} onSuccess={onSuccess} onError={onError}>
-        <Input label="User name" name="name" />
-        <Input label="Password" name="password" type="password" />
-        <Input type="submit" value="Create user" />
-      </Form>
-      {successMessage && <Text isSuccess>{successMessage}</Text>}
-      {errorMessage && <Text isError>{errorMessage}</Text>}
-    </main>
+    <Router basename="/react-food">
+      <Header />
+      <main className="container content">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contacts" component={Contact} />
+          <Route path="/category/:name" component={Category} />
+          <Route path="/meal/:id" component={Recipe} />
+          <Route component={NotFound} />
+        </Switch>
+      </main>
+      <Footer />
+    </Router>
   );
 }
 
