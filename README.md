@@ -1,3 +1,3 @@
 # React Food Portfolio Project
 
-[Demo](https://michey85.github.io/react-food/).
+[Demo](https://antonlazurko.github.io/jest-testing-library-advanced).
