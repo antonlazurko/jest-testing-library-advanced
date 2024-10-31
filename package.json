@@ -1,6 +1,10 @@
 {
-  "name": "food-project",
-  "homepage": "https://michey85.github.io/react-food/",
+  "name": "jest-testing-library-advanced",
+  "author": {
+    "name": "Anton Lazurko",
+    "email": "a.lazurko.al@gmail.com"
+  },
+  "homepage": "https://antonlazurko.github.io/jest-testing-library-advanced/",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -49,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }
