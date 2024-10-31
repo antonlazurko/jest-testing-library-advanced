@@ -10,7 +10,7 @@ describe('CategoryList', () => {
         expect(screen.getByRole('list')).toMatchSnapshot();
     });
     test('should render correctly with empty array', () => {
-        renderWithRouter(<CategoryList catalog={[]} />);
+        renderWithRouter(<CategoryList/>);
         expect(screen.getByRole('list')).toMatchSnapshot();
     });
 })

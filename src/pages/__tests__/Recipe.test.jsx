@@ -24,4 +24,29 @@ describe("Recipe", () => {
         await waitForElementToBeRemoved(preloader);
         expect(screen.getByRole("article")).toMatchSnapshot();
     });
+    test('should render a recipe without area and youtube', async () => {
+        apiSpy.mockResolvedValueOnce({
+          meals: [
+            {
+              idMeal: '1',
+              strMeal: 'First',
+              strCategory: 'Category',
+              strInstructions: 'Instructions',
+              strMealThumb: 'Thumb',
+              strIngredient1: 'Ingredient1',
+              strMeasure1: 'Measure1',
+            },
+          ],
+        });
+
+        renderWithRouter(<Recipe />);
+
+        const preloader = screen.getByRole('progressbar');
+
+        expect(preloader).toBeInTheDocument();
+
+        await waitForElementToBeRemoved(preloader);
+
+        expect(screen.getByRole('article')).toMatchSnapshot();
+    });
 });
